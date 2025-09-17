@@ -1,7 +1,7 @@
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
-import { NavLink, Routes, Route, Navigate } from 'react-router-dom';
+import { NavLink, Routes, Route, Navigate, useMatch } from 'react-router-dom';
 import { HomePage } from './components/HomePage';
 import { TabsPage } from './components/TabsPage';
 import { NotFoundPage } from './components/NotFoundPage';
@@ -17,23 +17,25 @@ export const App = () => {
       >
         <div className="container">
           <div className="navbar-brand">
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) =>
-                classNames('navbar-item', { 'is-active': isActive })
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/tabs"
-              className={({ isActive }) =>
-                classNames('navbar-item', { 'is-active': isActive })
-              }
-            >
-              Tabs
-            </NavLink>
+            <ul className="navbar-brand">
+              <li
+                className={classNames('navbar-item', {
+                  'is-active': useMatch('/') !== null,
+                })}
+              >
+                <NavLink to="/" end>
+                  Home
+                </NavLink>
+              </li>
+
+              <li
+                className={classNames('navbar-item', {
+                  'is-active': useMatch('/tabs/*') !== null,
+                })}
+              >
+                <NavLink to="/tabs">Tabs</NavLink>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
