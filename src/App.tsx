@@ -1,7 +1,7 @@
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
-import { NavLink, Routes, Route, Navigate, useMatch } from 'react-router-dom';
+import { Routes, Route, Navigate, useMatch, Link } from 'react-router-dom';
 import { HomePage } from './components/HomePage';
 import { TabsPage } from './components/TabsPage';
 import { NotFoundPage } from './components/NotFoundPage';
@@ -23,9 +23,7 @@ export const App = () => {
                   'is-active': useMatch('/') !== null,
                 })}
               >
-                <NavLink to="/" end>
-                  Home
-                </NavLink>
+                <Link to="/">Home</Link>
               </li>
 
               <li
@@ -33,7 +31,7 @@ export const App = () => {
                   'is-active': useMatch('/tabs/*') !== null,
                 })}
               >
-                <NavLink to="/tabs">Tabs</NavLink>
+                <Link to="/tabs">Tabs</Link>
               </li>
             </ul>
           </div>
